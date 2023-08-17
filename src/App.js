@@ -1,31 +1,29 @@
 import "./App.css";
-import { useState } from "react";
+import React from "react";
 import { Header } from "./Header";
 import { Info } from "./Info";
 import { Input } from "./Input";
-
+import { useDispatch } from "react-redux";
+import { increment, decrement } from "./amountSlice";
 const App = () => {
-  const [amount, setAmount] = useState(130);
-  const [name, setName] = useState("");
-  const increment = () => {
-    setAmount(amount + 1);
+  const dispatch = useDispatch();
+
+  const incrementMe = () => {
+    dispatch(increment());
   };
-  const decrement = () => {
-    setAmount(amount - 1);
+  const decrementMe = () => {
+    dispatch(decrement());
   };
 
-  const receiveData = (name) => {
-    setName(name);
-  };
   return (
     <div>
-      <Header amount={amount} />
+      <Header />
       <hr />
       <h1>Preet</h1>
-      <Info name={name} />
-      <Input receiveData={receiveData} />
-      <button onClick={increment}>++</button>
-      <button onClick={decrement}>--</button>
+      <Info />
+      <Input />
+      <button onClick={incrementMe}>++</button>
+      <button onClick={decrementMe}>--</button>
     </div>
   );
 };

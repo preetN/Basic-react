@@ -1,6 +1,9 @@
 import { useState } from "react";
-
-export const Input = ({ receiveData }) => {
+import React from "react";
+import { useDispatch } from "react-redux";
+import { setvalue } from "./nameSlice";
+export const Input = () => {
+  const dispatch = useDispatch();
   const [form, setForm] = useState("");
   const handleOnchange = (event) => {
     // console.log(event.target.value);
@@ -12,7 +15,8 @@ export const Input = ({ receiveData }) => {
 
   const handleOnsubmit = (event) => {
     event.preventDefault();
-    receiveData(form);
+
+    dispatch(setvalue(form));
   };
   return (
     <form onSubmit={handleOnsubmit}>

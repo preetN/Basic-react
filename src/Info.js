@@ -1,8 +1,11 @@
-export const Info = (props) => {
+import React from "react";
+import { useSelector } from "react-redux/es/hooks/useSelector";
+export const Info = () => {
+  const name = useSelector((state) => state.nameReducer.value);
   return (
     <p>
       <span>
-        {props.name}
+        {name}
         <br />
       </span>
       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius laboriosam
